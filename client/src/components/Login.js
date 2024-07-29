@@ -1,18 +1,17 @@
-import React from "react"
+import React, { useState } from 'react'
 import {Form,Button} from 'react-bootstrap'
-import { Link, useNavigate } from 'react-router-dom'
-import {useForm} from 'react-hook-form'
+import { Link } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
 import { login } from '../auth'
+import { useNavigate } from 'react-router-dom'
 
 
 const LoginPage=()=>{
     
-    const {register,handleSubmit,reset,formState:{errors}}=useForm()
+    const {register,handleSubmit,reset,watch,formState:{errors}}=useForm()
 
-    let navigate=useNavigate()
+    const navigate=useNavigate()
     
-
-
     const loginUser=(data)=>{
        console.log(data)
 
@@ -28,20 +27,15 @@ const LoginPage=()=>{
        .then(res=>res.json())
        .then(data=>{
            console.log(data.access_token)
-           
            if (data){
             login(data.access_token)
-
             navigate('/')
            }
            else{
                alert('Invalid username or password')
            }
 
-
        })
-
-
 
        reset()
     }
@@ -66,7 +60,7 @@ const LoginPage=()=>{
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password"
                         placeholder="Your password"
-                        {...register('password',{required:true,minLength:8})}
+                        {...register('password',{required:true,minLength:2})}
                     />
                 </Form.Group>
                 {errors.username && <p style={{color:'red'}}><small>Password is required</small></p>}
@@ -81,7 +75,6 @@ const LoginPage=()=>{
                 <Form.Group>
                     <small>Do not have an account? <Link to='/signup'>Create One</Link></small>
                 </Form.Group>
-                
             </form>
         </div>
     </div>

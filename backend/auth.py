@@ -45,20 +45,27 @@ class SignUp(Resource):
 
 
 
-@auth_ns.route('/login')
+@auth_ns.route("/login")
 class Login(Resource):
     @auth_ns.expect(login_modal)
     def post(self):
-        data=request.get_json()
-        username=data.get('username')
-        password=data.get('password')
-        db_user=User.query.filter_by(username=username).first()
-        if db_user and check_password_hash(db_user.password,password):
-            acces_token=create_access_token(identity=db_user.username)
-            refresh_token= create_refresh_token(identity=db_user.username)
-            return jsonify (
-                {"access_token": acces_token, "refresh_token" : refresh_token}
+        data = request.get_json()
+
+        username = data.get("username")
+        password = data.get("password")
+
+        db_user = User.query.filter_by(username=username).first()
+
+        if db_user and check_password_hash(db_user.password, password):
+            access_token = create_access_token(identity=db_user.username)
+            refresh_token = create_refresh_token(identity=db_user.username)
+            return jsonify(
+                {"access_token": access_token, "refresh_token": refresh_token}
             )
+        else:
+            return jsonify({"message": "Invalid username or password"})
+
+
         
 @auth_ns.route('/refresh')
 class RefreshResource(Resource):
