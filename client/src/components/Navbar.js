@@ -1,13 +1,12 @@
 import React from "react";
+import  { Link } from 'react-router-dom'
 
 const NavBar = () => {
   return (
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand">
-        Recipes
-      </a>
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <Link className="navbar-brand" to="/">Recipes</Link>
       <button
-        class="navbar-toggler"
+        className="navbar-toggler"
         type="button"
         data-toggle="collapse"
         data-target="#navbarNav"
@@ -15,32 +14,24 @@ const NavBar = () => {
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-        <span class="navbar-toggler-icon"></span>
+        <span className="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link active">
-              Home
-            </a>
+      <div className="collapse navbar-collapse" id="navbarNav">
+        <ul className="navbar-nav">
+          <li className="nav-item active">
+            <Link className="nav-link active" to="/">Home </Link>
           </li>
-          <li class="nav-item">
-            <a class="nav-link active">
-              Sign Up
-            </a>
+          <li className="nav-item">
+            <Link className="nav-link active" to="/signup">Sign Up</Link>
           </li>
-          <li class="nav-item">
-            <a class="nav-link active">
-              Login
-            </a>
+          <li className="nav-item">
+            <Link className="nav-link active" to="/login">Login </Link>
           </li>
-          <li class="nav-item">
-            <a class="nav-link active ">
-              Create Recipes
-            </a>
+          <li className="nav-item">
+            <Link className="nav-link active " to="/createrecipe">Create Recipes</Link>
           </li>
-          <li class="nav-item">
-            <a class="nav-link active">
+          <li className="nav-item">
+            <a className="nav-link active">
               Log Out
             </a>
           </li>

@@ -1,11 +1,11 @@
 import React from "react";
 
-const HomePage=()=>{
+const CreateRecipePage=()=>{
     return(
-        <div className="HomePage">
-            <h1>Home Page</h1>
+        <div className="CreateRecipePage Page">
+            <h1>CreateRecipePage Page</h1>
         </div>
     )
 }
 
-export default HomePage
+export default CreateRecipePage
